@@ -54,3 +54,13 @@ def logout():
     session.pop('email', None)
     msgClose ="La sesión fue cerrada correctamente"
     return render_template('public/modulo_login/index.html', msjAlert = msgClose, typeAlert=1)
+
+# ruta para la opcion de busqueda
+
+@app.route('/Busqueda')
+def Busqueda():
+    return render_template('public/dashboard/pages/Busqueda.html')
+
+@app.route('/Creacion')
+def Creacion():
+    return render_template('public/dashboard/pages/Creacion.html')

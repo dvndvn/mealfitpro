@@ -6,7 +6,8 @@
   <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
   <ul class="menu">
     <li><a href="{{ url_for('inicio') }}">Inicio</a></li>
-    <li><a href="#">Busqueda</a></li>
+    <li><a href="{{ url_for('Busqueda') }}">Busqueda</a></li>
+    <li><a href="{{ url_for('Creacion') }}">Creación</a></li>
     <li>
       <a href="{{ url_for('editProfile') }}">
         <i class="bi bi-person-circle"></i>

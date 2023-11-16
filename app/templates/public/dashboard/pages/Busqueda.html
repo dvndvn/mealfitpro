@@ -26,32 +26,22 @@
   <link rel="stylesheet" href="{{ url_for('static', filename ='assets/css/custom_alert.css') }}">
 </head>
 
-<body>
+<header class="header">
+    <a href="./" class="logo">
+      <img src="{{url_for('static', filename ='assets/imgs/LogoMealFitPro.jpg') }}" alt="Logo">
+    </a>
+    <input class="menu-btn" type="checkbox" id="menu-btn"/>
+    <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
+    <ul class="menu">
+      <li><a href="{{ url_for('inicio') }}">Inicio</a></li>
+      <li><a href="{{ url_for('Busqueda') }}">Busqueda</a></li>
+      <li>
+        <a href="{{ url_for('logout') }}">
+          <i class="bi bi-arrow-clockwise"></i>
+          Salir
+        </a>
+      </li>
+    </ul>
+  </header>
 
-  <!---Include del menu Horizontal-->
-  {% include 'public/dashboard/pages/menu.html' %}
-  
-  <main class="content-wrapper mt-5" style="margin-top:80px !important;">
-    <div class="container" style="width: 95% !important">
-      {% block body %}
-
-      {% include 'public/dashboard/pages/Dashboard.html' %}
-
-      {% include 'public/dashboard/pages/alerts.html' %}
-
-      {% endblock %}
-    </div>
-  </main>
-
-
-
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js"></script>
-  <script src="{{ url_for('static', filename ='assets/js/pace.min.js') }}"></script>
-  <!-- Alert -->
-  <script src="{{ url_for('static', filename ='assets/js/custom_alert.js') }}"></script>
-
-
-</body>
-
-</html>
+<h1>aca va la busqueda</h1>
