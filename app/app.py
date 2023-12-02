@@ -155,6 +155,84 @@ def actualizarMiPerfil(id):
                 return render_template('public/dashboard/home.html', msjAlert = msg, typeAlert=1, dataLogin = dataLoginSesion())
         return render_template('public/dashboard/home.html', dataLogin = dataLoginSesion())             
         
+@app.route('/form', methods=['GET', 'POST'])
+def registrarForm():
+    msg =''
+    if request.method == 'POST':
+        nombre              = request.form['nombre']
+        sexo                = request.form['sexo']
+        likes               = request.form['likes']
+        descripcion         = request.form['descripcion']
+        
+        conexion_MySQLdb = connectionBD()
+        cursor           = conexion_MySQLdb.cursor(dictionary=True)
+        
+        '''
+        cursor.execute('INSERT INTO empleados (nombre, sexo, likes, descripcion) VALUES (%s, %s, %s, %s)', (nombre, sexo, likes, descripcion))
+        ResultInsert = conexion_MySQLdb.commit()
+        '''
+            
+        sql         = ("INSERT INTO empleados(nombre, sexo, likes, descripcion) VALUES (%s, %s, %s, %s)")
+        valores     = (nombre, sexo, likes, descripcion)
+        cursor.execute(sql, valores)
+        conexion_MySQLdb.commit()
+        
+        cursor.close() #Cerrando conexion SQL
+        conexion_MySQLdb.close() #cerrando conexion de la BD
+        msg = 'Creo con exito'
+        
+        print(cursor.rowcount, "registro insertado")
+        print("1 registro insertado, id", cursor.lastrowid)
+  
+        return render_template('public/dashboard/pages/Creacion.html', msjAlert = msg, typeAlert=1, dataLogin = dataLoginSesion())
+    else:
+        return render_template('public/dashboard/pages/Creacion.html', msg = 'Metodo HTTP incorrecto')
+
+@app.route('/create', methods=['GET', 'POST'])
+def createForm():
+    msg =''
+    if request.method == 'POST':
+        nombre              = request.form['nombre']
+        ingredientes        = request.form['ingredientes']
+        preparacion         = request.form['preparacion']
+        dificulta           = request.form['dificulta']
+        
+        conexion_MySQLdb = connectionBD()
+        cursor           = conexion_MySQLdb.cursor(dictionary=True)
+        
+        '''
+        cursor.execute('INSERT INTO comida (nombre, ingredientes, preparacion, dificulta) VALUES (%s, %s, %s, %s)', (nombre, ingredientes, preparacion, dificulta))
+        ResultInsert = conexion_MySQLdb.commit()
+        '''
+            
+        sql         = ("INSERT INTO comida(nombre, ingredientes, preparacion, dificulta) VALUES (%s, %s, %s, %s)")
+        valores     = (nombre, ingredientes, preparacion, dificulta)
+        cursor.execute(sql, valores)
+        conexion_MySQLdb.commit()
+        
+        cursor.close() #Cerrando conexion SQL
+        conexion_MySQLdb.close() #cerrando conexion de la BD
+        msg = 'Creada Correctamente'
+        
+        print(cursor.rowcount, "registro insertado")
+        print("1 registro insertado, id", cursor.lastrowid)
+  
+        return render_template('public/dashboard/home.html', msjAlert = msg, typeAlert=1, dataLogin = dataLoginSesion())
+    else:
+        return render_template('public/dashboard/home.html', msg = 'Metodo HTTP incorrecto')
+
+@app.route('/View', methods=['GET','POST'])
+def view():
+    conexion_MySQLdb = connectionBD() #Hago instancia a mi conexión desde la función
+    mycursor         = conexion_MySQLdb.cursor(dictionary=True)
+    querySQL  = ("SELECT * FROM comida ORDER BY nombre")
+    mycursor.execute(querySQL)
+    data = mycursor.fetchall() #fetchall () Obtener todos los registros
+    mycursor.close() #cerrando conexion SQL
+    conexion_MySQLdb.close() #cerrando conexion de la BD
+    total = mycursor.rowcount #total de registros
+    print(total)
+    return render_template('public/dashboard/pages/view.html', dataEmpleados = data, dataTotal = total, dataLogin = dataLoginSesion())
         
 if __name__ == "__main__":
     app.run(debug=True, port=8000)

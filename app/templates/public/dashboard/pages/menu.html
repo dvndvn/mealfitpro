@@ -1,12 +1,12 @@
 <header class="header">
-  <a href="./" class="logo">
+  <a href="./View" class="logo">
     <img src="{{url_for('static', filename ='assets/imgs/LogoMealFitPro.jpg') }}" alt="Logo">
   </a>
   <input class="menu-btn" type="checkbox" id="menu-btn"/>
   <label class="menu-icon" for="menu-btn"><span class="navicon"></span></label>
   <ul class="menu">
-    <li><a href="{{ url_for('inicio') }}">Inicio</a></li>
-    <li><a href="{{ url_for('Busqueda') }}">Busqueda</a></li>
+    <li><a href="{{ url_for('view') }}">Inicio</a></li>
+     <!--<li><a href="{{ url_for('view') }}">Recetas</a></li>-->
     <li><a href="{{ url_for('Creacion') }}">Creación</a></li>
     <li>
       <a href="{{ url_for('editProfile') }}">

@@ -38,41 +38,40 @@
         {% if msg %}
         <p class="msg">{{ msg }}</p>
         {% endif %}
-        <div class="container">
-            <h2 class="text-center titleDashboard mt-3">Creación de Recetas
-                <hr>
-              </h2>   
+        <h2 class="text-center titleDashboard mt-3">Creación de Recetas
+            <hr>
+          </h2>
+    
                     <form action="{{ url_for('createForm') }}" method="POST" autocomplete="off">
                         <div class="row">
-                            <div class="col-md-12 mb-2">
-                                <label for="nombre" class="form-label">Nombre Receta</label>
-                                <input type="text" class="form-control" name="nombre" placeholder="Arroz con Leche">
-                              </div> 
-                            <div class="col-md-12 mb-2">
-                                <label for="ingredientes" class="form-label">Ingredientes</label>
-                                <input type="Text" class="form-control" name="ingredientes" placeholder="Leche, Arroz, Lecherita">
-                              </div>                       
-                              <div class="col-md-12 mb-2">
-                                <label for="dificulta">Dificultad Receta</label>
+                            <div class="six columns">
+                                <label for="nombre">Nombre</label>
+                                <input type="text" name="nombre" class="u-full-width">
+                            </div>  
+                            <div class="six columns">
+                                <label for="ingredientes">Ingredientes</label>
+                                <input type="text" name="ingredientes" class="u-full-width">
+                            </div>                          
+                            <div class="six columns">
+                                <label for="dificulta">Seleccione dificultad de la receta</label>
                                 <select class="u-full-width" name="dificulta">
-                                  <option value=""></option>
-                                  <option value="Facil">Fácil</option>
-                                  <option value="Intermedio">Intermedio</option>
-                                  <option value="Difícil">Difícil</option>
+                                    <option value=""></option>
+                                    <option value="Facil">Fácil</option>
+                                    <option value="Intermedio">Intermedio</option>
+                                    <option value="Difícil">Difícil</option>        
                                 </select>
-                              </div>
+                            </div>
                         </div>
     
-                        <div class="row">                            
+                        <div class="row">                           
                             <h1> </h1>
-                            <div class="col-md-12 mb-2">
-                                <label for="preparacion" class="form-label">Preparación</label>
-                                <textarea class="form-control" name="preparacion" rows="2"
-                                  placeholder="Indique la preparación de la receta"></textarea>
-                              </div>
+                            <div class="six columns">
+                                <label for="preparacion">Describe tu perfil</label>
+                                <textarea name="preparacion" class="u-full-width"></textarea>
+                            </div>
                         </div>
     
-                        <div class="d-grid gap-2 col-1 mx-auto">
+                        <div class="row centered">
                             <div class="seven columns">
                                 <input class="button-primary" type="submit" value="Enviar mi formulario">
                             </div>

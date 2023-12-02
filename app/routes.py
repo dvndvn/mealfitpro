@@ -59,8 +59,24 @@ def logout():
 
 @app.route('/Busqueda')
 def Busqueda():
-    return render_template('public/dashboard/pages/Busqueda.html')
+    #return render_template('public/dashboard/pages/Busqueda.html')
+    if 'conectado' in session:
+        return render_template('public/dashboard/pages/Busqueda.html', dataLogin = dataLoginSesion())
+    else:
+        return render_template('public/modulo_login/index.html', dataPaises = listaPaises())
 
 @app.route('/Creacion')
 def Creacion():
-    return render_template('public/dashboard/pages/Creacion.html')
+    #return render_template('public/dashboard/pages/Creacion.html')
+    if 'conectado' in session:
+        return render_template('public/dashboard/pages/Creacion.html', dataLogin = dataLoginSesion())
+    else:
+        return render_template('public/modulo_login/index.html', dataPaises = listaPaises())
+
+#@app.route('/View')
+#def View():
+    #return render_template('public/dashboard/pages/Creacion.html')
+    #if 'conectado' in session:
+       #return render_template('public/dashboard/pages/view.html', dataLogin = dataLoginSesion())
+    #else:
+        #return render_template('public/modulo_login/index.html', dataPaises = listaPaises())

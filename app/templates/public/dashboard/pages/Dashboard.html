@@ -1,11 +1,11 @@
 
   <div class="row justify-content-center">
     <div class="col-md-12 mb-2">
-      <h1 class="text-center">Hola Comunidad, sientanse todos Bienvenidos  😃 👍 <hr></h1>
+      <h1 class="text-center">Bienvenidos a Meal Fit Pro <hr></h1>
       {% if(dataLogin.tipoLogin ==1) %}
-          <p class="text-center">Hola soy <strong> {{ dataLogin.nombre }},</strong> Administrador. </p>
+          <p class="text-center">Hola <strong> {{ dataLogin.nombre }},</strong> Eres un administrador. </p>
         {% else %}
-          <p class="text-center">Hola mi nombre es <strong>{{ dataLogin.nombre }},</strong> soy un usuario. </p>
+          <p class="text-center">Hola <strong>{{ dataLogin.nombre }},</strong> Eres un usuario. </p>
       {% endif %}
     </div>
 
